@@ -9,7 +9,8 @@ The pipeline ingests events from an external API, validates them using Avro sche
 ## 🏗 Architecture Overview
 
 **Layers and responsibilities:**
-![Architecture Diagram](images/architecture.png)
+![Architecture Diagram](images/architechture.png)
+
 
 
 ### 1. Ingestion Layer
@@ -237,5 +238,6 @@ Full observability
 Kafka lag
 
 Throughput
+
 
 Storage health
