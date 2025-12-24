@@ -1,0 +1,51 @@
+{
+  "uid": "near-realtime-lab",
+  "title": "Near Realtime Lab - Overview",
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "5s",
+  "tags": ["near-realtime", "kafka", "clickhouse", "minio"],
+  "time": { "from": "now-15m", "to": "now" },
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "Kafka Events In (msgs/sec) - via offset rate",
+      "gridPos": { "x": 0, "y": 0, "w": 24, "h": 9 },
+      "datasource": { "type": "prometheus", "uid": "PROM" },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum(rate(kafka_topic_partition_current_offset{topic=\"events.v1\"}[1m]))",
+          "legendFormat": "{{topic}}"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Kafka Consumer Lag (max) - lab-consumer-1",
+      "gridPos": { "x": 0, "y": 9, "w": 24, "h": 9 },
+      "datasource": { "type": "prometheus", "uid": "PROM" },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "max(kafka_consumergroup_lag{consumergroup=\"lab-consumer-1\",topic=\"events.v1\"})",
+          "legendFormat": "{{consumergroup}} / {{topic}}"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "MinIO S3 Requests (rate)",
+      "gridPos": { "x": 0, "y": 18, "w": 24, "h": 9 },
+      "datasource": { "type": "prometheus", "uid": "PROM" },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum(rate(minio_s3_requests_total[1m]))",
+          "legendFormat": "requests/sec"
+        }
+      ]
+    }
+  ]
+}
