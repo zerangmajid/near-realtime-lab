@@ -9,6 +9,7 @@ The pipeline ingests events from an external API, validates them using Avro sche
 ## 🏗 Architecture Overview
 
 **Layers and responsibilities:**
+![Architecture Diagram](images/architecture.png)
 
 ### 1. Ingestion Layer
 - **Mock API**  
