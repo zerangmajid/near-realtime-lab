@@ -11,6 +11,7 @@ The pipeline ingests events from an external API, validates them using Avro sche
 **Layers and responsibilities:**
 ![Architecture Diagram](images/architecture.png)
 
+
 ### 1. Ingestion Layer
 - **Mock API**  
   Generates synthetic event data (`/event` endpoint).
